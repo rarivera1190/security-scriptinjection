@@ -9,11 +9,10 @@ jobs:
     steps:
       - name: Assign label
         env:
-          TITLE: ${{ github.event.issue.title }}     # By setting it as a env. variable we avoid code from being injected. 
-        run: |
-          #issue_title="${{ github.event.issue.title }}"  Instead of using it inside this shell script.
-          if [[ "$TITLE" == *"bug"* ]]; then
-          echo "Issue is about a bug!"
-          else
+          TITLE: ${{ github.event.issue.title }} # By setting it as a env. variable we avoid code from being injected. 
+        run: |                                   # issue_title="${ github.event.issue.title }}" Instead of using git variable inside shell.         
+          if [[ "$TITLE" == *"bug"* ]]; then    
+          echo "Issue is about a bug!" 
+          else 
           echo "Issue is not about a bug"
           fi
